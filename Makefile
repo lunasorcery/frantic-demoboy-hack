@@ -5,10 +5,12 @@ OBJ=./obj
 
 build:
 	mkdir -p $(OBJ)
-	$(BIN)/gbdk-n-compile.sh galaxy.c -o $(OBJ)/galaxy.rel
-	$(BIN)/gbdk-n-link.sh $(OBJ)/galaxy.rel -o $(OBJ)/galaxy.ihx
-	$(BIN)/gbdk-n-make-rom.sh -yc $(OBJ)/galaxy.ihx galaxy.gbc
+	cd image-tool && make && ./tool > ../image.h
+	$(BIN)/gbdk-n-compile.sh demoboy.c -o $(OBJ)/demoboy.rel
+	$(BIN)/gbdk-n-link.sh $(OBJ)/demoboy.rel -o $(OBJ)/demoboy.ihx
+	$(BIN)/gbdk-n-make-rom.sh -yc $(OBJ)/demoboy.ihx demoboy.gbc
 
 clean:
 	rm -rf $(OBJ)
-	rm -f galaxy.gbc
+	rm -f demoboy.gbc
+	rm -f image.h
