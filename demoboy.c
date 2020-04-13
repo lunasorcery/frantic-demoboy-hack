@@ -77,7 +77,7 @@ void main()
 {
   disable_interrupts();
   DISPLAY_OFF;
-  LCDC_REG = 0x67;
+  LCDC_REG = 0x41;//LCDC_REG = 0x67;
   /*
    * LCD        = Off
    * WindowBank = 0x9C00
@@ -90,7 +90,7 @@ void main()
    */
 
   /* Set palettes */
-  BGP_REG = OBP0_REG = OBP1_REG = 0xE4U;
+  //BGP_REG = OBP0_REG = OBP1_REG = 0xE4U;
 
   /* Initialize the background */
   set_bkg_data(0x00, bkg_tiles_count, bkg_tiles);
